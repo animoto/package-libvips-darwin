@@ -7,33 +7,15 @@ env:
   global:
     - COLUMNS=240
     - PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/jpeg-turbo/lib/pkgconfig:$PKG_CONFIG_PATH"
-    - HOMEBREW_NO_AUTO_UPDATE=1
-    - HOMEBREW_NO_INSTALL_CLEANUP=1
 
 before_install:
-  - brew tap lovell/package-libvips-darwin https://github.com/lovell/package-libvips-darwin.git
-  - KEEP_DEPENDENCIES=$(brew deps --include-build lovell/package-libvips-darwin/vips)
-  - echo "$KEEP_DEPENDENCIES"
-  - brew update
-  - brew cleanup
-  # Remove unused formulae to speed upgrade
-  - brew list -1 | grep -Ev ${KEEP_DEPENDENCIES//$'\n'/|} | xargs brew rm -f
-  # Ensure libtiff and gdk-pixbuf are also removed (for libjpeg-turbo support)
-  - brew rm -f libtiff gdk-pixbuf
-  - brew upgrade
-
-install:
-  - brew install advancecomp
-  - brew install --build-bottle lovell/package-libvips-darwin/libtiff
-  - brew install --build-bottle lovell/package-libvips-darwin/gdk-pixbuf
-  - brew postinstall lovell/package-libvips-darwin/gdk-pixbuf
-  - brew install --build-bottle lovell/package-libvips-darwin/vips
+  - ./setup.sh
 
 script:
   - ./package.sh
 
 before_cache:
-  - brew cleanup
+  - ./cleanup.sh
 
 cache:
   directories:
