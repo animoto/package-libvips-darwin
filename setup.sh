@@ -12,8 +12,8 @@ echo "$KEEP_DEPENDENCIES"
 
 brew update
 brew cleanup
-brew list -1 | grep -Ev ${KEEP_DEPENDENCIES// /|} | xargs brew uninstall --ignore-dependencies
-brew uninstall --ignore-dependencies libtiff gdk-pixbuf
+brew list -1 | grep -Ev ${KEEP_DEPENDENCIES// /|} | xargs brew uninstall --force --ignore-dependencies
+brew uninstall --force --ignore-dependencies libtiff gdk-pixbuf
 brew upgrade
 
 brew install advancecomp
