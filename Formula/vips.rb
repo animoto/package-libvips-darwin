@@ -3,7 +3,6 @@ class Vips < Formula
   homepage "https://github.com/libvips/libvips"
   url "https://github.com/libvips/libvips/releases/download/v8.9.1/vips-8.9.1.tar.gz"
   sha256 "45633798877839005016c9d3494e98dee065f5cb9e20f4552d3b315b8e8bce91"
-
   # This formula is compiled from source, so there are no bottles.
   bottle :unneeded
 
@@ -14,7 +13,10 @@ class Vips < Formula
   depends_on "glib"
   depends_on "jpeg-turbo"
   depends_on "libexif"
+  depends_on "libde265"
   depends_on "libgsf"
+  depends_on "libheif"
+  depends_on "libimagequant"
   depends_on "libpng"
   depends_on "librsvg"
   depends_on "libtiff"

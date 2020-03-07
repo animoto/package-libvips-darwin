@@ -49,6 +49,7 @@ chmod 644 lib/*.dylib
 printf "{\n\
   \"cairo\": \"$(pkg-config --modversion cairo)\",\n\
   \"croco\": \"$(pkg-config --modversion libcroco-0.6)\",\n\
+  \"de265\": \"$(pkg-config --modversion libde265)\",\n\  
   \"exif\": \"$(pkg-config --modversion libexif)\",\n\
   \"fontconfig\": \"$(pkg-config --modversion fontconfig)\",\n\
   \"freetype\": \"$(pkg-config --modversion freetype2)\",\n\
@@ -58,6 +59,8 @@ printf "{\n\
   \"glib\": \"$(pkg-config --modversion glib-2.0)\",\n\
   \"gsf\": \"$(pkg-config --modversion libgsf-1)\",\n\
   \"harfbuzz\": \"$(pkg-config --modversion harfbuzz)\",\n\
+  \"heif\": \"$(pkg-config --modversion libheif)\",\n\
+  \"imagequant\": \"$(pkg-config --modversion libimagequant)\",\n\  
   \"jpeg\": \"$(pkg-config --modversion libjpeg)\",\n\
   \"lcms\": \"$(pkg-config --modversion lcms2)\",\n\
   \"orc\": \"$(pkg-config --modversion orc-0.4)\",\n\
