@@ -1,18 +1,22 @@
 #!/bin/sh
 set -e
 
+REPO_LOCATION=steviec/package-libvips-darwin
 HOMEBREW_NO_AUTO_UPDATE=1
 HOMEBREW_NO_INSTALL_CLEANUP=1
-KEEP_PACKAGES="cmake gdbm gettext giflib git jpeg libde265 libffi libheif libimagequant libpng libxml2 openssl openssl@1.1 pcre pkg-config python readline sqlite xz"
 
-brew cleanup
-brew list -1 | grep -Ev ${KEEP_PACKAGES// /|} | xargs brew rm -f
+brew tap lovell/package-libvips-darwin https://github.com/$REPO_LOCATION.git
+KEEP_DEPENDENCIES=$(brew deps --include-build $REPO_LOCATION/vips)
+
+echo "$KEEP_DEPENDENCIES"
 brew update
+brew cleanup
+brew list -1 | grep -Ev ${KEEP_DEPENDENCIES// /|} | xargs brew rm -f
+brew rm -f libtiff gdk-pixbuf
 brew upgrade
 
 brew install advancecomp
-brew tap lovell/package-libvips-darwin https://github.com/lovell/package-libvips-darwin.git
-brew install lovell/package-libvips-darwin/libtiff --build-bottle
-brew install lovell/package-libvips-darwin/gdk-pixbuf --build-bottle
-brew postinstall lovell/package-libvips-darwin/gdk-pixbuf
-brew install lovell/package-libvips-darwin/vips --build-bottle
+brew install $REPO_LOCATION/libtiff --build-bottle
+brew install $REPO_LOCATION/gdk-pixbuf --build-bottle
+brew postinstall $REPO_LOCATION/gdk-pixbuf
+brew install $REPO_LOCATION/vips --build-bottle
