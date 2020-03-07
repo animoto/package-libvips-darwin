@@ -9,10 +9,11 @@ brew tap $REPO_PATH https://github.com/$REPO_PATH.git
 KEEP_DEPENDENCIES=$(brew deps --include-build $REPO_PATH/vips)
 
 echo "$KEEP_DEPENDENCIES"
+
 brew update
 brew cleanup
-brew list -1 | grep -Ev ${KEEP_DEPENDENCIES// /|} | xargs brew rm -f
-brew rm -f libtiff gdk-pixbuf
+brew list -1 | grep -Ev ${KEEP_DEPENDENCIES// /|} | xargs brew uninstall --ignore-dependencies
+brew uninstall --ignore-dependencies libtiff gdk-pixbuf
 brew upgrade
 
 brew install advancecomp
