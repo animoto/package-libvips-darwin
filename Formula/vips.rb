@@ -17,7 +17,6 @@ class Vips < Formula
   depends_on "libde265"
   depends_on "libgsf"
   depends_on "libheif"
-  depends_on "libimagequant"
   depends_on "libpng"
   depends_on "librsvg"
   depends_on "libtiff"
