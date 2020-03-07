@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: 'macos-latest'
     env:
-      PKG_CONFIG_PATH: "/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/jpeg-turbo/lib/pkgconfig:$PKG_CONFIG_PATH"
+      PKG_CONFIG_PATH: "/usr/local/opt/libimagequant/lib/pkgconfig:/usr/local/opt/libffi/lib/pkgconfig:/usr/local/opt/jpeg-turbo/lib/pkgconfig:$PKG_CONFIG_PATH"
     steps:
     - uses: actions/checkout@v1
     - name: Set up build environment
