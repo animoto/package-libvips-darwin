@@ -62,6 +62,7 @@ printf "{\n\
   \"heif\": \"$(pkg-config --modversion libheif)\",\n\
   \"jpeg\": \"$(pkg-config --modversion libjpeg)\",\n\
   \"lcms\": \"$(pkg-config --modversion lcms2)\",\n\
+  \"imagequant\": \"$(pkg-config --modversion imagequant)\",\n\  
   \"orc\": \"$(pkg-config --modversion orc-0.4)\",\n\
   \"pango\": \"$(pkg-config --modversion pango)\",\n\
   \"pixman\": \"$(pkg-config --modversion pixman-1)\",\n\
